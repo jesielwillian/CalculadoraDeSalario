@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cálculo - PJ</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="form-wizard-using-tabs.css">
+
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            margin-bottom: 50px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #f5f5f5;
+            padding: 12px
+        }
+        body div.container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .tab-title {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .panel-footer {
+            font-weight: bold;
+            text-align: right;
+        }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+        <div class="row">
+            <section>
+                <h1>Calculadora CLT - PJ</h1>
+                <div class="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line"></div>
+                        <ul class="nav nav-tabs" role="tablist">
+
+                            <li role="presentation" class="active">
+                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Carga Horária">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-time"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li role="presentation" class="disabled">
+                                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Valores CLT">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-book"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Despesas PJ">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-usd"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li role="presentation" class="disabled">
+                                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Resultado">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <form role="form" class="form-horizontal">
+                        <div class="tab-content">
+                            <div class="tab-pane active" role="tabpanel" id="step1">
+                                <div class="tab-title">
+                                    <h3>Qual é sua carga horária como CLT e a previsão para PJ?</h3>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cargaHorariaCLT" class="col-md-4 control-label">Carga Horária CLT</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="cargaHorariaCLT" placeholder="176" value="176" required="required">
+                                            <div class="input-group-addon">horas / mês</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cargaHorariaPJ" class="col-md-4 control-label">Carga Horária PJ</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="cargaHorariaPJ" placeholder="168" value="168" required="required">
+                                            <div class="input-group-addon">horas / mês</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-primary next-step">Continuar</button></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="step2">
+                                <div class="form-group">
+                                    <label for="custoFuncionarioEmpresa" class="col-md-4 control-label">Custo Funcionário Empresa</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">R$</div>
+                                            <input type="text" class="form-control money" id="custoFuncionarioEmpresa" placeholder="Custo Total Funcionário Empresa" value="7644.44" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inss" class="col-md-4 control-label">INSS</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">R$</div>
+                                            <input type="text" class="form-control money" id="inss" placeholder="INSS" value="1000.00" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="provisaoInss" class="col-md-4 control-label">Provisão INSS (13º e Férias)</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">R$</div>
+                                            <input type="text" class="form-control money" id="provisaoInss" placeholder="Provisão INSS (13º e Férias)" value="194.44" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="irrf" class="col-md-4 control-label">IRRF</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">R$</div>
+                                            <input type="text" class="form-control money" id="irrf" placeholder="IRRF" value="365.12" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
+                                    <li><button type="button" class="btn btn-primary next-step">Continuar</button></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="step3">
+                                <div class="tab-title">
+                                    <h3>Quais serão suas despesas mensais como PJ?</h3>
+                                </div>
+                                <div class="form-group">
+                                    <label for="custoImposto" class="col-md-4 control-label">Imposto(s) sobre Faturamento</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="custoImposto" placeholder="Imposto(s) sobre Faturamento" value="6" required="required">
+                                            <div class="input-group-addon">%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="custoContador" class="col-md-4 control-label">Gastos com Contador</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">R$</div>
+                                            <input type="text" class="form-control money" id="custoContador" placeholder="Gastos com Contador" value="250.00" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="custoPrevidencia" class="col-md-4 control-label">Previdência Privada / INSS</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">R$</div>
+                                            <input type="text" class="form-control money" id="custoPrevidencia" placeholder="Previdência Privada / INSS" value="513.00" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="custoIR" class="col-md-4 control-label">Imposto de Renda</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">R$</div>
+                                            <input type="text" class="form-control money" id="custoIR" placeholder="Imposto de Renda" value="290.00" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="outrosCustos" class="col-md-4 control-label">Outras Despesas</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">R$</div>
+                                            <input type="text" class="form-control money" id="outrosCustos" placeholder="Outras Despesas" value="64.00" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
+                                    <li><button id="calcular" type="button" class="btn btn-success btn-info-full next-step">Calcular!</button></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="complete">
+                                <div id="invalidFormAlert" class="alert alert-warning" role="alert">
+                                    <p class="text-center"><strong>Ops...</strong> parece que não temos as informações necessárias para o cálculo!<br />
+                                    Por gentileza, volte ao formulário e preencha todos os campos</p>
+                                </div>
+                                <div id="resultados">
+                                    <div class="tab-title">
+                                        <h3>Cálculo</h2>
+                                    </div>
+
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading">
+                                            Receita líquida como CLT
+                                        </div>
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Custo Funcionário Empresa</td>
+                                                    <td class="text-right">R$ <span id="resultadoCustoFuncionarioEmpresa"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>INSS</td>
+                                                    <td class="text-right">- R$ <span id="resultadoInss"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Provisão INSS (13º e Férias)</td>
+                                                    <td class="text-right">- R$ <span id="resultadoProvisaoInss"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>IRRF</td>
+                                                    <td class="text-right">- R$ <span id="resultadoIrrf"></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="panel-footer">
+                                            R$ <span id="resultadoValoresCLT"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="panel panel-danger">
+                                        <div class="panel-heading">
+                                            Despesas previstas como PJ
+                                        </div>
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Imposto(s) sobre Faturamento</td>
+                                                    <td class="text-right">+ R$ <span id="resultadoImposto"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Gastos com Contador</td>
+                                                    <td class="text-right">R$ <span id="resultadoGastosContador"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Previdência Privada / INSS</td>
+                                                    <td class="text-right">+ R$ <span id="resultadoPrevidencia"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Imposto de Renda</tdth>
+                                                    <td class="text-right">+ R$ <span id="resultadoImpostoDeRenda"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Outras Despesas</td>
+                                                    <td class="text-right">+ R$ <span id="resultadoOutrasDespesas"></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="panel-footer">
+                                            R$ <span id="resultadoDespesasPJ"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="tab-title">
+                                                <h3>Resultado</h2>
+                                            </div>
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Faturamento Bruto Mensal (Receita líquida CLT + Despesas PJ)</td>
+                                                        <td class="text-right"><strong>R$ <span id="faturamentoBruto"></span></strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Taxa para <span id="horasCLT"></span> horas mensais</td>
+                                                        <td class="text-right"><strong>R$ <span id="taxaCargaHorariaCLT"></span> / hora</strong></td>
+                                                    </tr>
+                                                    <tr id="taxaHoraDiferente">
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class="tab-title">
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted text-center">Idealizado e desenvolvido por <a href="https://www.facebook.com/Jhesyel89" target="_blank">Jesiel Vieira</p></p>
+        </div>
+    </footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.min.js"></script>
+    <script src="form-wizard-using-tabs.js"></script>
+    <script type="text/javascript">
+    function parseMoney(a){var o=a.replace(".","").replace(",",".");return parseFloat(o)}function roundMoney(a){return(Math.round(100*a)/100).toFixed(2)}function roundTax(a){return Math.ceil(a)}function formatMoney(a,o,r,e){var t=a,s=(o=isNaN(o=Math.abs(o))?2:o,e=void 0==e?",":e,r=void 0==r?".":r,t<0?"-":""),n=parseInt(t=Math.abs(+t||0).toFixed(o))+"",l=(l=n.length)>3?l%3:0;return s+(l?n.substr(0,l)+r:"")+n.substr(l).replace(/(\d{3})(?=\d)/g,"$1"+r)+(o?e+Math.abs(t-n).toFixed(o).slice(2):"")}$(function(){$("#resultados, #invalidFormAlert").hide(),$(".money").mask("000.000.000.000.000,00",{reverse:!0}),$("#calcular").click(function(a){$("#resultados, #invalidFormAlert").hide();if(!1===$("form")[0].checkValidity())return $("#invalidFormAlert").show(),void a.preventDefault();var o=$("#cargaHorariaCLT").val(),r=$("#cargaHorariaPJ").val(),e=parseMoney($("#custoFuncionarioEmpresa").val()),t=parseMoney($("#inss").val()),s=parseMoney($("#provisaoInss").val()),n=parseMoney($("#irrf").val()),l=Number($("#custoImposto").val()),u=parseMoney($("#custoContador").val()),i=parseMoney($("#custoPrevidencia").val()),m=parseMoney($("#custoIR").val()),d=parseMoney($("#outrosCustos").val()),h=e-t-s-n,f=u+i+m+d,c=h+f,p=c*(l/100),M=roundTax((c=roundMoney(c+p))/o),v=roundTax(c/r);if($("#resultadoCustoFuncionarioEmpresa").html(formatMoney(e)),$("#resultadoInss").html(formatMoney(t)),$("#resultadoProvisaoInss").html(formatMoney(s)),$("#resultadoIrrf").html(formatMoney(n)),$("#resultadoValoresCLT").html(formatMoney(h)),$("#resultadoGastosContador").html(formatMoney(u)),$("#resultadoPrevidencia").html(formatMoney(i)),$("#resultadoImpostoDeRenda").html(formatMoney(m)),$("#resultadoOutrasDespesas").html(formatMoney(d)),$("#resultadoImposto").html(formatMoney(p)),$("#resultadoDespesasPJ").html(formatMoney(f+p)),$("#faturamentoBruto").html(formatMoney(c)),$("#horasCLT").html(o),$("#taxaCargaHorariaCLT").html(M),$("#taxaHoraDiferente").html(""),M!=v){var y=M<v?"menos":"mais";$("#taxaHoraDiferente").append("<td>Taxa para "+r+" horas mensais (ganhar o mesmo que CLT, e trabalhar "+y+")</td>"),$("#taxaHoraDiferente").append('<td class="text-right"><strong>R$ '+v+" / hora</strong></td>")}$("#resultados").show(),a.preventDefault()})});
+    </script>
+  </body>
+</html>
